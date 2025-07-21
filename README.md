@@ -46,6 +46,98 @@ println!("Hello, world!");
 
 ## Séance 2 :
 
+# Les structures
+Permettent de modéliser des objets.
+
+struct CompteBancaire {
+    nom: String,
+    solde: f64,
+}
+
+
+# Les fonctions
+
+Les méthodes des structures
+
+impl CompteBancaire {
+    fn afficher_solde(&self) {
+        println!("Solde: {}€", self.solde);
+    }
+
+    fn retrait(&mut self, montant: f64) {
+        self.solde -= montant;
+    }
+}
+
+
+# Boucle infinie :
+
+loop {
+    println!("Je tourne en boucle !");
+}
+
+
+# Boucle avec condition :
+
+while condition {
+    // Instructions
+}
+
+
+# Boucle for :
+
+for i in 0..5 {
+    println!("i vaut : {}", i);
+}
+
+
+# Compteurs
+
+Utilisés souvent avec les boucles "for" ou "while".
+
+
+let mut compteur = 0;
+while compteur < 3 {
+    println!("Compteur : {}", compteur);
+    compteur += 1;
+}
+
+
+# Les références
+
+# "&self" => Lecture seule
+
+On peut lire les champs mais pas les modifier :
+
+fn afficher(&self) {
+    println!("Nom : {}", self.nom);
+}
+
+
+# "&mut self" => Modification possible
+
+Permet de modifier les champs :
+
+
+fn changer_nom(&mut self, nouveau_nom: String) {
+    self.nom = nouveau_nom;
+}
+
+
+# "self" => Transfert de propriété (ownership)
+
+La méthode prend la possession complète de la structure :
+
+
+fn consommer(self) {
+    println!("Le compte de {} est consommé", self.nom);
+}
+
+
+
+
+
+
 
 
 
