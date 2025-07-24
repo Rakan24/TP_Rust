@@ -135,18 +135,117 @@ fn consommer(self) {
 
 
 
+## Séance 3 :
+
+# Gestion de fichiers avec Rust
+
+Permet de lire, écrire, modifier et supprimer des fichiers.
+
+use std::fs;
+
+fs::write("fichier.txt", "Contenu");
+let contenu = fs::read_to_string("fichier.txt").unwrap();
+fs::remove_file("fichier.txt").unwrap();
 
 
+# Structures : Exemples complémentaires
 
 
+struct FileManager {
+    nom_fichier: String,
+}
 
 
+# Implémentation avec `impl`
+
+Utiliser des méthodes associées à une structure.
 
 
+impl FileManager {
+    fn creer(&self) {
+        // code de création
+    }
+
+    fn lire(&self) {
+        // code de lecture
+    }
+}
 
 
+# Match
+
+Permet de tester plusieurs cas.
 
 
+let choix = 2;
+match choix {
+    1 => println!("Créer"),
+    2 => println!("Lire"),
+    _ => println!("Autre"),
+}
 
 
+# Lecture utilisateur
+
+Lire une ligne saisie au clavier :
+
+
+use std::io;
+
+let mut entree = String::new();
+io::stdin().read_line(&mut entree).expect("Erreur");
+
+
+# Date & Heure avec Chrono
+
+Afficher la date actuelle au format UTC ou français :
+
+
+use chrono::Utc;
+
+let maintenant = Utc::now();
+println!("{}", maintenant.format("%d/%m/%Y %H:%M:%S"));
+
+
+# Ownership (propriétaire)
+
+Chaque variable possède sa donnée. Une seule référence propriétaire à la fois.
+
+
+let nom = String::from("Kevin");
+let copie = nom.clone(); // nom encore accessible
+
+
+# Membership (appartenance)
+
+Les données font partie d’une structure :
+
+
+struct User {
+    nom: String,
+    secu: String,
+}
+
+
+# Menu interactif avec match et boucle
+
+Afficher un menu, lire un choix, et exécuter une action :
+
+
+let options = ["Créer", "Lire", "Modifier", "Supprimer"];
+
+for (i, option) in options.iter().enumerate() {
+    println!("{}. {}", i + 1, option);
+}
+
+let mut choix = String::new();
+io::stdin().read_line(&mut choix).unwrap();
+
+let choix: usize = choix.trim().parse().unwrap();
+
+match choix {
+    1 => println!("Créer fichier"),
+    2 => println!("Lire fichier"),
+    _ => println!("Option invalide"),
+}
 
